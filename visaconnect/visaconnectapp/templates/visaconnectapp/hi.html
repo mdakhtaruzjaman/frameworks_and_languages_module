@@ -5,17 +5,17 @@
     <style>
         /* CSS for styling */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display:flex;
-            flex-direction:column;
-            min-height: 100vh;
-            overflow-y: auto; /* Add vertical scroll when content overflows */
-         box-sizing: border-box;
-         
-        }
+            
+           font-family: Arial, sans-serif;
+           margin: 0;
+           padding: 0;
+           background-color: #f4f4f4;
+           display: flex;
+           flex-direction: column;
+           min-height: 100vh;
+           overflow-y: auto;
+           box-sizing: border-box;
+           }
         header {
             background-color: #444141;
             color: #fff;
@@ -23,13 +23,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 100px;
+            cursor: pointer; /* Add cursor style to indicate clickability */
         }
-        .logo {
-            max-width: 100px;
-        }
-        .logo-text {
-            margin-left: 10px;
-        }
+
         .nav {
             display: flex;
         }
@@ -39,12 +35,11 @@
             margin: 0 20px;
         }
         .trending-posts {
-           background-color: #fff;
-           flex: 1;
-           padding: 60px;
-         min-height: calc(100vh - 200px); /* Adjust this value as needed */
-}
-
+            background-color: #fff;
+            flex: 1;
+            padding: 60px;
+            min-height: calc(100vh - 200px); /* Adjust this value as needed */
+        }
         .social-icons {
             text-align: center;
             text-decoration: none;
@@ -62,38 +57,137 @@
             background-color: #333;
             color: #fff;
             padding: 10px;
+        }
+       </style>
+        <style>
+        /* this is the CSS code for trending post*/
         
+       .trending-posts {
+       display: flex;
+       justify-content: space-between;
+       margin: 0;
+       overflow-x: hidden; /* Add this line to hide horizontal overflow */
+       }
+
+        .post {
+        flex: 2 2;
+        margin: 0;
+        max-width: 95%;
+        overflow: hidden;
+        padding: 10px;
+         }
+
+         .post-content {
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         margin: 0;
+         margin-left: 0;
+         }
+
+        .post-image {
+         max-width: 100px;
+         height: auto;
+         margin: 0;
+         margin-left: 0;
+         overflow: hidden;
+         }
+
+
+
+
+
+         .post-text {
+         flex: 0;
+          }
+
+          .post-text h2 {
+           font-size: 16px;
+           margin: 0;
             }
 
-    </style>
+          .post-text p {
+          font-size: 16px;
+            }
+           .title-container {
+            display: flex;
+            align-items: center;
+            }
+
+           .logo {
+            width: 200px; /* Adjust the width as needed */
+            height: 75%;  /* Maintain the aspect ratio */
+            margin-right: 100px; /* Space between logo and title */
+            }
+
+</style>
+
+    
+    
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="https://github.com/your-username/your-repo-name/raw/main/path/to/your/logo.png" alt="Visa Connect Logo">
-        </div>
-        <div class="logo-text">
-            <h1>Visa Connect</h1>
-        </div>
+        <div class="title-container">
+            <img src="https://i.postimg.cc/xqDTPDXP/Visa-Connect-Org2.png" alt="Logo" class="logo" id="logo">
+            <h1 id="logo-text">Visa Connect</h1>
+         </div>
+         
+        
         <nav class="nav">
-            <a href="#">Canada</a>
-            <a href="#">United Kingdom</a>
+            <a href="canada.html">Canada</a>
+            <a href="united-kingdom.html">United Kingdom</a>
             <!-- Add more menu items here -->
+            <button onclick="window.location.href = 'new-page.html'">Open New Page</button>
+
         </nav>
+        
     </header>
-    
+
     <div class="trending-posts">
-        <!-- Trending posts, blogs, and stories content goes here -->
+        <div class="post">
+            <div class="post-content">
+                <img src="https://i0.wp.com/olufemiloye.ca/wp-content/uploads/2021/06/save.jpeg?w=800&ssl=1.jpg" alt="Trending Image">
+                <div class="post-text">
+                    <h2>🇨🇦 **Study in Canada - January 2024 Intake** 🇨🇦</h2>
+                    <p>Are you a Bangladeshi student dreaming of pursuing your education abroad? Look no further, because Canada is calling! 📚🍁</p>
+                    <!-- Add more content here -->
+                </div>
+            </div>
+        </div>
+    
+        <div class="post">
+            <div class="post-content">
+                <img src="https://icsblog.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2023/05/12194404/1606541408_Study_in_UK.jpg" alt="Trending Image 2">
+                <div class="post-text">
+                    <h2>2. Trending Post Title 2</h2>
+                    <p>Description of the second trending post goes here.</p>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    
 
     <div class="social-icons">
         <!-- Social media icons go here -->
-        <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
-        <a href="#"><img src="facebook.png" alt="Facebook"></a>
-        <a href="#"><img src="x.png" alt="x"></a>
-        <a href="#"><img src="instagram.png" alt="Instagram"></a>
-        <a href="#"><img src="youtube.png" alt="YouTube"></a>
-        <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Linkedin_Shiny_Icon.svg/640px-Linkedin_Shiny_Icon.svg.png"
+             alt="LinkedIn"  class="social-icon" style="width: 30px; height: 30px;"></a>
+
+        <!--<a href="#"><img src="facebook.png" alt="Facebook"></a>-->
+
+        <a href="https://www.facebook.com/profile.php?id=61551458913764" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/768px-2021_Facebook_icon.svg.png?20220821121039.png" 
+            alt="Facebook Icon" class="social-icon" style="width: 30px; height: 30px;">
+        </a>
+        
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/640px-X_logo_2023.svg.png" 
+            alt="x" class="social-icon" style="width: 30px; height: 30px;" ></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/640px-Instagram-Icon.png"
+        alt="Instagram" class="social-icon" style="width: 30px; height: 30px;" ></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/640px-YouTube_full-color_icon_%282017%29.svg.png" 
+            alt="YouTube" class="social-icon" style="width: 30px; height: 30px;"></a>
+        <a href="#"><img src="https://static.vecteezy.com/system/resources/previews/023/986/492/non_2x/tiktok-logo-tiktok-logo-transparent-tiktok-icon-transparent-free-free-png.png" 
+            alt="TikTok" class="social-icon" style="width: 30px; height: 30px;"></a>
     </div>
 
     <div class="language-selector">
@@ -111,6 +205,27 @@
         <button>Offices</button>
         <button>Privacy</button>
     </footer>
+
+    <script>
+        // JavaScript to refresh the page when logo or logo-text is clicked
+          const logo = document.getElementById("logo");
+          const logoText = document.getElementById("logo-text");
+
+          logo.addEventListener("click", () => {
+          location.reload();
+         });
+
+          logoText.addEventListener("click", () => {
+          location.reload();
+          });
+
+        // JavaScript to refresh the page when the title is clicked
+        const title = document.getElementById("logo-text");
+
+        title.addEventListener("click", () => {
+            location.reload();
+        });
+    </script>
 </body>
 </html>
 
