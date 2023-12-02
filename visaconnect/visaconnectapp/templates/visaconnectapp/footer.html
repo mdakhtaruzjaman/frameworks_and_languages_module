@@ -1,47 +1,29 @@
-<div class="footer">
-    <button onclick="window.location.href = 'contact.html'">Contact</button>
-    <button onclick="window.location.href = 'about.html'">About</button>
-    <button onclick="window.location.href = 'offices.html'">Offices</button>
-    <button onclick="window.location.href = 'privacy.html'">Privacy</button>
-    <div class="social-icons">
-        <!-- Social media icons go here -->
-        <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
-        <a href="#"><img src="facebook.png" alt="Facebook"></a>
-        <a href="#"><img src="x.png" alt="x"></a>
-        <a href="#"><img src="instagram.png" alt="Instagram"></a>
-        <a href="#"><img src="youtube.png" alt="YouTube"></a>
-        <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+<!-- footer.html -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>About Us</h4>
+            <p>We are a team dedicated to providing visa assistance and guidance.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>Email: contact@visaconnect.com</p>
+            <p>Phone: +123 456 7890</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{% url 'canada' %}">Canada</a></li>
+                <li><a href="united-kingdom.html">United Kingdom</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <p>Follow us on social media for the latest updates.</p>
+        </div>
     </div>
-    <div class="language-selector">
-        <!-- Language selector options go here -->
-        <select>
-            <option value="english">English</option>
-            <option value="bengali">Bengali</option>
-        </select>
+
+    <div class="footer-bottom">
+        <p>&copy; 2023 Visa Connect. All rights reserved.</p>
     </div>
-    <!-- Include the content of footer-content.html here -->
-    <div include-html="footer-content.html"></div>
-</div>
-
-<script>
-    // JavaScript to include the content of footer-content.html
-    function includeFooterContent() {
-        var element = document.querySelector('[include-html="footer-content.html"]');
-        if (element) {
-            var file = element.getAttribute('include-html');
-            if (file) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState === 4 && this.status === 200) {
-                        element.innerHTML = this.responseText;
-                    }
-                };
-                xhttp.open('GET', file, true);
-                xhttp.send();
-            }
-        }
-    }
-
-    // Call the function to include the content
-    includeFooterContent();
-</script>
+</footer>

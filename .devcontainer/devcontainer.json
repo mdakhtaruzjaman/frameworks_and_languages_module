@@ -1,6 +1,6 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/debian
-{
+//{
 	//"name": "Debian",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	//"image": "mcr.microsoft.com/devcontainers/universal:2-linux",
@@ -9,24 +9,23 @@
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8000, 8001],
-	"portsAttributes": {
-		"8000": {
-			"label": "Server API"
-		},
-		"8001": {
-			"label": "Client"
+	//"forwardPorts": [8000, 8001],
+	//"portsAttributes": {
+	//	"8000": {
+	//		"label": "Server API"
+	//	},"8001": {
+		//	"label": "Client"
 			//"protocol": "https"
-		}
-	},
+	//	}
+	//},
 
 
 	// Configure tool-specific properties.
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-azuretools.vscode-docker",
-				"streetsidesoftware.code-spell-checker"
+	//"customizations": {
+	//	"vscode": {
+	//		"extensions": [
+	//			"ms-azuretools.vscode-docker",
+	//			"streetsidesoftware.code-spell-checker"
 
 				// both live preview extensions do not work in codespaces
 				// https://stackoverflow.com/questions/74452866/how-preview-a-html-file-github-codespaces
@@ -36,11 +35,59 @@
 				// Other possible recomended extensions - I kind of want to keep this workspace simple
 				// "42Crunch.vscode-openapi"
 				// "ms-vscode.makefile-tools"
-			]
-		}
+	//		]
+	//	}
 
-	}
+//	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
-}
+//}
+
+//mycode ofr devcontainer.json
+{
+	// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+	// README at: https://github.com/devcontainers/templates/tree/main/src/debian
+  
+	// Set a name for your development container
+	"name": "Your Dev Container Name",
+  
+	// Specify a Docker image to use if you are not using a Dockerfile
+	"image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+  
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+  
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// Include both your server and client ports.
+	"forwardPorts": [3000, 8080],
+  
+	// Customize port attributes for your forwarded ports
+	"portsAttributes": {
+	  "3000": {
+		"label": "Server API",
+		"onAutoForward": "openBrowser"
+	  },
+	  "8080": {
+		"label": "Client",
+		"onAutoForward": "openBrowser"
+		// You can uncomment the next line if you need the client to be served over HTTPS
+		// "protocol": "https"
+	  }
+	},
+  
+	// Configure tool-specific properties.
+	"customizations": {
+	  "vscode": {
+		"extensions": [
+		  "ms-azuretools.vscode-docker",
+		  "streetsidesoftware.code-spell-checker"
+		  // Add other extensions as needed
+		]
+	  }
+	}
+  
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+  }
+  

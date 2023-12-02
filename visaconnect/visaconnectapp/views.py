@@ -1,23 +1,44 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from django.shortcuts import render, redirect
+from .forms import ClientInquiryForm
+from django.core.mail import send_mail
+from django.conf import settings
+
 def hi(request): 
     return render(request, 'visaconnectapp/hi.html')
 
-#(the below code is to get access to facebook page and it's posts)
-#from django.http import JsonResponse
-#import facebook
+def canada_page(request):
+    return render(request, 'visaconnectapp/Canada.html')
 
-#def get_page_posts(request):
-#    user_access_token = 'EAAE2zU3OxP8BO3mCsAygRRFHCDZBGqxEDjqzKdNUpC2jTpKABvMq5uNqRHlqIpvMBwLQWsqgCFF5zoWc1PyZBmnJmRuWDbZCHisEzcCH4LsweiFD4XH7Pfe9sWX6z8bINijwAwCTxEOFOqneuSyW69GS7ey5OOv6RMp5wB70xs17zmop5wyZAeLq1KbbKT3HG13vrAd53fAquJtIXhxNbbU0zg4DQw3Ro1LkJ5pNlUqhVnWiOfebliR1lrKUqJz5HPnHQ1OgSCgZD'
- #   page_id = '129027193627517'
+def united_kingdom_page(request):
+    return render(request, 'visaconnectapp/United-Kingdom.html')
 
-  #  graph = facebook.GraphAPI(access_token=user_access_token, version="v13.0")
+def inquiry_form(request):
+    form = ClientInquiryForm()
+    return render(request, 'visaconnectapp/inquiry_form.html', {'form': form})
 
-   # try:
-        # Get the page's posts
-    #    posts = graph.get_connections(id=page_id, connection_name='posts')
-        # You can now work with the 'posts' data
-     #   return JsonResponse({'posts': posts})
-    #except facebook.GraphAPIError as e:
-     #   return JsonResponse({'error': str(e)})
+def submit_inquiry(request):
+    if request.method == 'POST':
+        form = ClientInquiryForm(request.POST)
+        if form.is_valid():
+            inquiry = form.save()
+
+            # Email subject and body including client's information
+            subject = f'New Client Inquiry from {inquiry.name}'
+            message = f'You have received a new inquiry from {inquiry.name} (Email: {inquiry.email}).\n\nMessage:\n{inquiry.message}'
+
+            send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,  # Sender's email
+                ['visaconnect.int@gmail.com'],  # Your email where you want to receive the inquiries
+                fail_silently=False,
+            )
+            return redirect('thank_you')  # Redirect to the thank you page
+    else:
+        form = ClientInquiryForm()
+
+    return render(request, 'visaconnectapp/inquiry_form.html', {'form': form})
+
+def thank_you(request):
+    return render(request, 'visaconnectapp/thank_you.html')
+

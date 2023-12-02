@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Visa Connect</title>
     <style>
         /* CSS for styling */
+
         body {
-            
-           font-family: Arial, sans-serif;
-           margin: 0;
-           padding: 0;
-           background-color: #f4f4f4;
-           display: flex;
-           flex-direction: column;
-           min-height: 100vh;
-           overflow-y: auto;
-           box-sizing: border-box;
-           }
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
         header {
             background-color: #444141;
             color: #fff;
@@ -23,126 +26,361 @@
             justify-content: space-between;
             align-items: center;
             padding: 100px;
-            cursor: pointer; /* Add cursor style to indicate clickability */
+            cursor: pointer;
         }
 
         .nav {
             display: flex;
         }
+
         .nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 20px;
+            margin: 20px;
         }
+
         .trending-posts {
             background-color: #fff;
             flex: 1;
             padding: 60px;
-            min-height: calc(100vh - 200px); /* Adjust this value as needed */
+            min-height: calc(100vh - 200px);
         }
+
         .social-icons {
             text-align: center;
             text-decoration: none;
             color: #fff;
             padding: 20px;
         }
+
         .language-selector {
             text-align: center;
             background-color: #333;
             color: #fff;
             padding: 10px;
         }
+
         .footer {
             text-align: center;
             background-color: #333;
             color: #fff;
             padding: 10px;
         }
-       </style>
-        <style>
-        /* this is the CSS code for trending post*/
-        
-       .trending-posts {
-       display: flex;
-       justify-content: space-between;
-       margin: 0;
-       overflow-x: hidden; /* Add this line to hide horizontal overflow */
-       }
+
+        /* Additional CSS for the trending posts */
+        .trending-posts {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            overflow-x: hidden;
+        }
 
         .post {
-        flex: 2 2;
-        margin: 0;
-        max-width: 95%;
-        overflow: hidden;
-        padding: 10px;
-         }
+            flex: 2 2;
+            margin: 0;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 10px;
+        }
 
-         .post-content {
-         display: flex;
-         flex-direction: column;
-         align-items: flex-start;
-         margin: 0;
-         margin-left: 0;
-         }
+        .post-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 0;
+        }
 
         .post-image {
-         max-width: 100px;
-         height: auto;
-         margin: 0;
-         margin-left: 0;
-         overflow: hidden;
-         }
+            max-width: 100%;
+            height: auto;
+            margin: 0;
+            overflow: hidden;
+        }
 
+        html {
+            font-size: 16px;
+        }
 
+        .text {
+            font-size: 1rem;
+        }
 
+        .post-text h2 {
+            font-size: 1rem;
+            margin: 0;
+        }
 
+        .post-text p {
+            font-size: 16px;
+        }
 
-         .post-text {
-         flex: 0;
-          }
-
-          .post-text h2 {
-           font-size: 16px;
-           margin: 0;
-            }
-
-          .post-text p {
-          font-size: 16px;
-            }
-           .title-container {
+        .title-container {
             display: flex;
             align-items: center;
-            }
+            margin: 20px;
+        }
 
-           .logo {
-            width: 200px; /* Adjust the width as needed */
-            height: 75%;  /* Maintain the aspect ratio */
-            margin-right: 100px; /* Space between logo and title */
-            }
+        .logo {
+           max-width: 200px; /* Adjust the width as needed */
+           height: auto; /* Automatically adjust the height to maintain aspect ratio */
+           margin-right: 20px; /* Adjust the space between logo and title */
+              }
+
+
+         .social-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+
+        
+        @media (max-width: 576px) {
+       /* Adjust your styles for small screens here */
+       .title-container {
+    display: flex;
+    align-items: center;
+    margin: 10px; /* Adjust the margin as needed */
+    max-width: 70%; /* Adjust the maximum width as needed */
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+
+
+
+.logo {
+    max-width: 100px;
+    height: auto;
+    margin-right: 10px; /* Decrease the margin to create more space for the title */
+    margin-left: -100px;
+}
+
+
+
+.nav {
+       
+       margin-top: -150px; /* Adjust as needed */
+        margin-left: -100px;
+        width: 100%; /* Make sure the container takes the full width */
+        display: flex;
+        align-items: center;
+        max-width: 100%; /* Adjust the maximum width as needed */
+        white-space: nowrap; /* Prevent wrapping */
+    }
+
+    .nav a {
+        margin-top: 10px;
+        margin-right: 5px; /* Adjust the margin between nav links */
+    }
+
+
+    .trending-posts {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally (optional) */
+    }
+
+    .post {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .post-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .post-image {
+        max-width: 100%;
+        max-height: auto;
+        height: auto;
+    }
+
+.post-text h2 {
+    font-size: 1.5rem; /* Adjust as needed */
+    margin: 0;
+}
+
+.post-text p {
+    font-size: 16px;
+}
+
+    .social-icons {
+        text-align: center; /* Center social icons */
+        padding: 10px;
+    }
+
+    .footer {
+        text-align: center; /* Center footer buttons */
+        padding: 10px;
+    }
+        }
+
+        
+        @media (min-width: 577px) and (max-width: 1024px) {
+    /* Adjust your styles for medium screens here */
+
+    .logo {
+        max-width: 100%; /* Adjust the width for smaller screens like phones */
+        margin-right: 40px; /* Adjust the space between logo and title */
+        margin-left: -100px;
+    }
+
+    .post {
+        flex: 1 1; /* Change the flex property to make posts stack vertically */
+        max-width: 100%; /* Adjust post width for medium screens */
+    }
+
+    .post-content {
+        margin: 10px 0; /* Add margin to separate posts vertically */
+    }
+
+    .post-text h2 {
+        font-size: 1.5rem; /* Adjust the font size for post titles */
+    }
+
+    .social-icons {
+        text-align: center; /* Center social icons */
+        padding: 10px;
+    }
+
+    .footer {
+        text-align: center; /* Center footer buttons */
+        padding: 10px;
+    }
+}
+
+@media (min-width: 1025px) {
+    /* Adjust your styles for large screens here */
+
+    .logo {
+        max-width: 200px; /* Adjust the logo width for large screens */
+        margin-right: 100px; /* Adjust the space between logo and title */
+    }
+
+    .post {
+        flex: 2 2; /* Change the flex property for posts on large screens */
+        max-width: 50%; /* Adjust post width for large screens */
+    }
+
+    .post-content {
+        margin: 10px 0; /* Add margin to separate posts vertically */
+    }
+
+    .post-text h2 {
+        font-size: 2rem; /* Adjust the font size for post titles on large screens */
+    }
+
+    .social-icons {
+        text-align: center; /* Center social icons */
+        padding: 20px;
+    }
+
+    .footer {
+        text-align: center; /* Center footer buttons */
+        padding: 20px;
+    }
+}
+
+
+         /* Browser-specific CSS using vendor prefixes for Chrome */
+@supports (-webkit-appearance: none) {
+    /* CSS for Chrome */
+    body {
+        background-color: lightblue;
+    }
+
+    /* Add more Chrome-specific styles here */
+    .custom-button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+}
+
+
+     /* Browser-specific CSS using vendor prefixes for Firefox */
+@-moz-document url-prefix() {
+    /* CSS for Firefox */
+    body {
+        background-color: lightgreen;
+    }
+
+    /* Add more Firefox-specific styles here */
+    .custom-button {
+        background-color: #ff9900;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+}
+
+</style>
+<style type="text/css">
+    /* CSS for Internet Explorer */
+    body {
+        background-color: lightblue;
+    }
+
+    /* Add more Internet Explorer-specific styles here */
+    .ie-specific-element {
+        color: red;
+    }
+
+/* Style for Inquiry Button */
+.inquiry-button {
+    background-color: lightblue; /* Matching header color */
+    color: rgb(26, 23, 188); /* White text */
+    border: none; /* No border */
+    padding: 15px 30px; /* Larger padding for a bigger button */
+    font-size: 1.2rem; /* Slightly larger text */
+    cursor: pointer; /* Cursor indication for clickable element */
+    border-radius: 5px; /* Slight rounding of corners */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Spacing between letters */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+.inquiry-button:hover {
+    background-color: lightblue; /* Slightly lighter color on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
+
 
 </style>
 
-    
-    
+<script>
+    // Detect Internet Explorer 11 and add a class to the <html> element
+    if (navigator.userAgent.match(/Trident\/7\./)) {
+        document.documentElement.className += ' ie11';
+    }
+</script>
+
+</style>
+
 </head>
 <body>
-    <header>
-        <div class="title-container">
-            <img src="https://i.postimg.cc/xqDTPDXP/Visa-Connect-Org2.png" alt="Logo" class="logo" id="logo">
-            <h1 id="logo-text">Visa Connect</h1>
-         </div>
-         
-        
-        <nav class="nav">
-            <a href="canada.html">Canada</a>
-            <a href="united-kingdom.html">United Kingdom</a>
-            <!-- Add more menu items here -->
-            <button onclick="window.location.href = 'new-page.html'">Open New Page</button>
 
-        </nav>
-        
-    </header>
+        <header>
+            <div class="title-container">
+                <img src="https://i.postimg.cc/xqDTPDXP/Visa-Connect-Org2.png" alt="Logo" class="logo" id="logo">
+                <h1 id="logo-text">Visa Connect</h1>
+            </div>
+    
+            <nav class="nav">
+                <a href="{% url 'canada' %}">Canada</a>
+                <a href="united-kingdom.html">United Kingdom</a>
+            </nav>
+        </header>
 
+        <button onclick="location.href='/inquiry/'" class="inquiry-button">Submit Your Inquiry</button>
+
+        
     <div class="trending-posts">
         <div class="post">
             <div class="post-content">
@@ -159,15 +397,15 @@
             <div class="post-content">
                 <img src="https://icsblog.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2023/05/12194404/1606541408_Study_in_UK.jpg" alt="Trending Image 2">
                 <div class="post-text">
-                    <h2>2. Trending Post Title 2</h2>
+                    <h2>Study in the United Kingdom</h2>
                     <p>Description of the second trending post goes here.</p>
                 </div>
             </div>
         </div>
     </div>
-    
-    
 
+    <button onclick="location.href='/inquiry/'" class="inquiry-button">Submit Your Inquiry</button>
+    
     <div class="social-icons">
         <!-- Social media icons go here -->
         <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Linkedin_Shiny_Icon.svg/640px-Linkedin_Shiny_Icon.svg.png"
@@ -190,6 +428,7 @@
             alt="TikTok" class="social-icon" style="width: 30px; height: 30px;"></a>
     </div>
 
+
     <div class="language-selector">
         <!-- Language selector options go here -->
         <select>
@@ -197,6 +436,9 @@
             <option value="bengali">Bengali</option>
         </select>
     </div>
+
+    <div id="header-placeholder"></div>
+
 
     <footer class="footer">
         <!-- Footer buttons go here -->
@@ -206,26 +448,32 @@
         <button>Privacy</button>
     </footer>
 
+    <div id="footer-placeholder"></div>
+
     <script>
-        // JavaScript to refresh the page when logo or logo-text is clicked
-          const logo = document.getElementById("logo");
-          const logoText = document.getElementById("logo-text");
+        const logo = document.getElementById("logo");
+        const logoText = document.getElementById("logo-text");
 
-          logo.addEventListener("click", () => {
-          location.reload();
-         });
+        logo.addEventListener("click", () => {
+            location.reload();
+        });
 
-          logoText.addEventListener("click", () => {
-          location.reload();
-          });
+        logoText.addEventListener("click", () => {
+            location.reload();
+        });
 
-        // JavaScript to refresh the page when the title is clicked
         const title = document.getElementById("logo-text");
 
         title.addEventListener("click", () => {
             location.reload();
         });
-    </script>
+    </script>  
 </body>
 </html>
+
+
+
+
+
+
 

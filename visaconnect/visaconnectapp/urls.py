@@ -1,14 +1,14 @@
 from django.urls import path
+from django.contrib import admin
 from . import views
+
 urlpatterns = [
-    path('', views.hi, name = 'home-page'),
+    path('', views.hi, name='home-page'),  # Home page
+    path('canada/', views.canada_page, name='canada'),
+    path('united-kingdom/', views.united_kingdom_page, name='united_kingdom'),
+    path('inquiry/', views.inquiry_form, name='inquiry'),  # For displaying the form
+    path('submit-inquiry/', views.submit_inquiry, name='submit_inquiry'),  # For form submission
+    path('thank-you/', views.thank_you, name='thank_you'),  # Thank you page after submission
+    path('admin/', admin.site.urls),
+    # ... any other paths you need ...
 ]
-
-#(the below code is to get access to facebook page and it's posts)
-#from django.urls import path
-#from . import views
-
-#urlpatterns = [
-    # Add other URL patterns
-   # path('get-page-posts/', views.get_page_posts, name='get_page_posts'),
-#]

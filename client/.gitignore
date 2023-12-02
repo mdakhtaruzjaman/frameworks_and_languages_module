@@ -1,0 +1,23 @@
+# Dependency directories
+node_modules/
+
+# Environment configuration
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Production build files
+/dist
+/build
+
+# Optional: MacOS system files
+.DS_Store
+
+# Optional: Editor directories and files
+.idea
+*.sublime-project
+*.sublime-workspace
+.vscode/
+
