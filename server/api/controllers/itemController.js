@@ -1,5 +1,5 @@
+//itemController.js:
 const Item = require('../../models/items');
-
 
 // Simulated database in-memory
 const items = [];
@@ -32,3 +32,5 @@ exports.deleteItem = (req, res) => {
     res.status(404).send('Item not found');
   }
 };
+
+

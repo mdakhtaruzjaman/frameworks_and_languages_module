@@ -10,7 +10,6 @@
   "jest": {
     "testEnvironment": "node"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,4 +23,3 @@
     "supertest": "^6.3.3"
   }
 }
-

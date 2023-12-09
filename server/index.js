@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const itemRoutes = require('./api/routes/itemRoutes');
@@ -8,28 +7,44 @@ const itemRoutes = require('./api/routes/itemRoutes');
 // Enable CORS for all requests
 app.use(cors());
 
-// JSON body parsing
+// Built-in middleware for urlencoded and JSON
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// BodyParser middleware
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Use routes
 app.use('/api', itemRoutes);
 
+// Serve the root path
 app.get('/', (req, res) => {
   res.send('Freecycle API is running...');
 });
 
-// Serve openapi documentation
+// Serve OpenAPI documentation from the public directory
 app.use('/api-docs', express.static('public/openapi.html'));
 
-// Start the server only if the file has been called directly, i.e., not required by another module like tests
-if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-}
+// Error handling middleware for any request that gets this far
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
-// Export the app for testing
+// Handle uncaught exceptions - this is a catch-all for any uncaught errors in the app
+process.on('uncaughtException', (err) => {
+  console.error('There was an uncaught error', err);
+  process.exit(1); // Exiting the process is recommended after an uncaught exception
+});
+
+// Handle unhandled Promise rejections - similar to uncaught exceptions but for Promises
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  process.exit(1); // Exiting the process is recommended after an unhandled rejection
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+// The module.exports is useful if you're importing the app in tests or other modules
 module.exports = app;
+

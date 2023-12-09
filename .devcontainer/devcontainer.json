@@ -61,20 +61,21 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// Include both your server and client ports.
 	"forwardPorts": [3000, 8080],
-  
+
 	// Customize port attributes for your forwarded ports
-	"portsAttributes": {
+	"portsAttributes": {		  
+
 	  "3000": {
 		"label": "Server API",
-		"onAutoForward": "openBrowser"
+		"onAutoForward": "openBrowser",
+		"protocol": "https"
 	  },
 	  "8080": {
 		"label": "Client",
-		"onAutoForward": "openBrowser"
-		// You can uncomment the next line if you need the client to be served over HTTPS
-		// "protocol": "https"
+		"onAutoForward": "openBrowser",
+		"protocol": "https"
 	  }
-	},
+	},  
   
 	// Configure tool-specific properties.
 	"customizations": {
@@ -88,6 +89,7 @@
 	}
   
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	//"remoteUser": "root"
   }
+  
   
