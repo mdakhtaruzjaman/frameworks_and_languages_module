@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canada</title>
+    <!-- Add your CSS and other head content here -->
+    <!-- Static files like CSS, JavaScript, Images should be loaded using Django's static tag -->
+</head>
+<body>
+    <header>
+        <!-- Your logo and navigation links go here -->
+    </header>
+
+    <div>
+        <h2>Welcome to Canada</h2>
+        <!-- Add Canada-specific content here -->
+    </div>
+
+    <nav class="nav">
+        <a href="canada.html" target="_blank">Canada</a>
+        <!-- Add more menu items here -->
+    </nav>
+
+    <button onclick="window.location.href = 'canada.html'">Canada</button>
+
+    {% include 'visaconnectapp/footer.html' %}
+</body>
+</html>
+
+

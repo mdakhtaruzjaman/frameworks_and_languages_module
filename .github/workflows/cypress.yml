@@ -1,0 +1,18 @@
+name: E2E Tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: npm install
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
+      with:
+        start: npm start
+        wait-on: 'http://localhost:8080'
+        wait-on-timeout: 60 # Waits for 1 minute for the server to be available
